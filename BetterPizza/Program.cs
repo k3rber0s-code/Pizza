@@ -16,7 +16,8 @@ namespace BetterPizza
             string[] nums = LoadNums();
             foreach (string s in nums)
             {
-                orders.Add(int.Parse(s));
+                if (s != String.Empty)
+                    orders.Add(int.Parse(s));
             }
 
             Fives(orders);
