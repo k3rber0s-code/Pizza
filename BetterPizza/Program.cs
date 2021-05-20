@@ -78,22 +78,25 @@ namespace BetterPizza
         private static void Twos(Orders orders)
         {
             int rmTwos = orders.TWO / 3 * 3;
-            orders.ChangeToWhole(Slice.TWO, rmTwos);
+            orders.RemoveSlices(Slice.TWO, rmTwos);
+            orders.AddWhole(rmTwos / 3);
 
             int rmOneTwo = Math.Min(orders.TWO / 2, orders.ONE / 2) * 2;
             orders.RemoveSlices(Slice.ONE, rmOneTwo);
-            orders.ChangeToWhole(Slice.TWO, rmOneTwo);
+            orders.RemoveSlices(Slice.TWO, rmOneTwo);
+            orders.AddWhole(rmOneTwo / 2);
 
             int rmOne = Math.Min(orders.TWO, orders.ONE / 4) * 4;
             orders.RemoveSlices(Slice.ONE, rmOne);
 
-            orders.ChangeToWhole(Slice.TWO, rmOne);
+            orders.ChangeToWhole(Slice.TWO, rmOne / 4);
         }
 
         private static void Threes(Orders orders)
         {
             int rmThrees = orders.THREE / 2 * 2;
-            orders.ChangeToWhole(Slice.THREE, rmThrees);
+            orders.RemoveSlices(Slice.THREE, rmThrees);
+            orders.AddWhole(rmThrees / 2);
 
             int rmTwoOne = Math.Min(orders.THREE, Math.Min(orders.TWO, orders.ONE));
             orders.RemoveSlices(Slice.TWO, rmTwoOne);
@@ -103,7 +106,7 @@ namespace BetterPizza
             int rmOne = Math.Min(orders.THREE, orders.ONE / 3) * 3;
             orders.RemoveSlices(Slice.ONE, rmOne);
 
-            orders.ChangeToWhole(Slice.THREE, rmOne);
+            orders.ChangeToWhole(Slice.THREE, rmOne / 3);
         }
 
         private static void Fours(Orders orders)
@@ -115,7 +118,7 @@ namespace BetterPizza
             int rmOnes = Math.Min(orders.FOUR, orders.ONE / 2) * 2;
             orders.RemoveSlices(Slice.ONE, rmOnes);
 
-            orders.ChangeToWhole(Slice.FOUR, rmOnes);
+            orders.ChangeToWhole(Slice.FOUR, rmOnes / 2);
         }
 
         private static void Fives(Orders orders)
