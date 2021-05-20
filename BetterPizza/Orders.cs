@@ -26,7 +26,8 @@ namespace BetterPizza
         public void Add(int num)
         {
             numOfPizza += num / 6;
-            slices[num % 6 - 1]++;
+            int index = num % 6 - 1;
+            if (index > -1) slices[index]++;
         }
 
         public void AddWhole(int count)
