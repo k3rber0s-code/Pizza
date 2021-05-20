@@ -29,6 +29,8 @@ namespace BetterPizza
             Rest(orders);
 
             PrintResult(orders.NUM_OF_PIZZA);
+
+            Console.ReadKey();
         }
 
         private static void PrintResult(int numOfPizza) // <<<<<<<<<<<<<<<<<<<<<<<<<<< CHANGE THIS METHOD TO PRINT THE RESULTS
@@ -50,11 +52,19 @@ namespace BetterPizza
             orders.RemoveSlices(Slice.TWO, rmTwos);
             orders.ChangeToWhole(Slice.THREE, rmTwos);
 
-            if (orders.THREE == 1) orders.RemoveSlices(Slice.ONE, orders.ONE);
-            orders.ChangeAllToWhole(Slice.THREE);
+            if (orders.THREE == 1)
+            {
+                orders.RemoveSlices(Slice.ONE, orders.ONE);
+                orders.AddWhole(1);
+            }
+            orders.RemoveSlices(Slice.THREE, orders.THREE);
 
-            if (orders.TWO > 0) orders.RemoveSlices(Slice.ONE, orders.ONE);
-            orders.ChangeAllToWhole(Slice.TWO);
+            if (orders.TWO > 0)
+            {
+                orders.RemoveSlices(Slice.ONE, orders.ONE);
+                orders.AddWhole(1);
+            }
+            orders.RemoveSlices(Slice.TWO, orders.TWO);
 
             if (orders.ONE > 0) orders.AddWhole(1);
             orders.RemoveSlices(Slice.ONE, orders.ONE);
